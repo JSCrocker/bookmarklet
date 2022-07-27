@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>BookMarkLet</title>
+</head>
+<body>
+  <h1>Bookmarklet</h1>
+
+  <p>
+    Binary Tree for Guess My Number! <a href="javascript:(() => {
+        mid = document.getElementsByClassName('guess')[0];
+        click_btn = document.getElementsByClassName('check')[0];
+        let is_running = true;
+        let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+        let start = 0, end = arr.length-2;
+        while(start <= end && is_running === true){
+            let i = Math.floor((start + end)/2);
+            mid.value = arr[i];
+            click_btn.click();
+            message = document.getElementsByClassName('message')[0].innerHTML;
+            if(message === 'Too low!'){
+                start = i + 1;
+            }
+            else if (message === 'Too high!'){
+                end = i - 1;
+            }
+            else{
+                is_running = false;
+            }
+        }
+    })()">bookmarklet</a><br>
+    <a href="https://jscrocker.github.io/GuessMyNumber/">Guess My Number!</a>
+  </p>
+
+</body>
+</html>
